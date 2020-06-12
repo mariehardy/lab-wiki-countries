@@ -1,24 +1,34 @@
 import React from 'react'
+import { Switch, Route, Link, Redirect } from 'react-router-dom';
 
-import { myCountries } from './CountriesList';
-import { countriesList as CountriesList } from './CountriesList'
+// import { myCountries } from './CountriesList';
+import countriesData from '../countries.json'
  
 
 const CountryDetail = (props) => {
 
   // console.log('props are ===== ' + props.match);
-  // console.log('myCountries are ===== ' + myCountries[0].cca3);
 
-  let filteredCountryDetail = myCountries.filter(el => el.cca3 === props.match.params.cca3)[0]
-  console.log('filteredCountryDetail is === ' + filteredCountryDetail)
+  let countryDetails = countriesData.find((el) => el.cca3 === props.match.params.id)
+  console.log('countryDetails is === ' + countryDetails)
 
-// console.log('filteredCountryDetail is === ' + filteredCountryDetail)
-
+  let countriesBorders = countriesData.filter((el) => el.borders.includes(countryDetails.cca3))
+  
   return (
-    <div className="App">
+    <div>
     country detail here
-      <div>{filteredCountryDetail.name.common}</div>
-      <div>{filteredCountryDetail.cca3}</div>
+
+      <div> Capital: {countryDetails.capital}</div>
+      <div> Area : {countryDetails.area} km<sup>2</sup></div>
+      <ul>Borders:
+      {countriesBorders.map((el, index) => {
+        return (
+          <li key={index}>
+          <Link to={"/" + el.cca3}>{el.name.common}</Link>
+          </li>
+        )
+      })}
+      </ul>
     </div>
   );
 }

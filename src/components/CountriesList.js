@@ -4,7 +4,7 @@ import countriesData from '../countries.json'
 
 import { Switch, Route, Link, Redirect } from 'react-router-dom';
 
-    export const myCountries = countriesData;
+    // export const myCountries = countriesData;
 
     export const countriesList = () => {
 
@@ -13,19 +13,14 @@ import { Switch, Route, Link, Redirect } from 'react-router-dom';
     return (
         <div>
             <ul>
-
-            {myCountries.map((oneCountry) => {
-                {/* console.log('oneCountry.cca3 is ====== ' + oneCountry.cca3) */}
+            {countriesData.map((el) => {
         return (
-          <div key={oneCountry.cca3}>
-            <h3><Link to={"/countrydetail/" + oneCountry.cca3}>{oneCountry.name.common}</Link></h3>
+          <div key={el.cca3}>
+          <img src={el.flag} alt={el.name.common}></img>
+            <h3><Link to={"/" + el.cca3}>{el.name.common}</Link></h3>
           </div>
         )
       })}
-
-              {/* {myCountries.map(el => <li key={el.cca3}><Link to={"/countrydetail" + el.cca3}>{el.name.common}</Link></li>)} */}
-              {/* {countriesData.map(el => <Link to={"/countrydetail" + el.cca3}><CountryTitle key={el.cca3} name={el.name.common} /></Link>)} */}
-
             </ul>
         </div>
     )

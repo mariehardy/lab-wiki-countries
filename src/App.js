@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 import { countriesList as CountriesList } from './components/CountriesList'
@@ -15,9 +14,11 @@ function App () {
 
 
       <div><CountriesList></CountriesList></div>
-      <div><CountryDetail></CountryDetail></div>
-      <Route path="/countrydetail/:cca3" component={CountryDetail} />
-
+      {/* <div><CountryDetail></CountryDetail></div> */}
+      {/* <Route exact path='/countrieslist' component={CountriesList}/> */}
+      <Switch>
+        <Route path="/:id" component={CountryDetail} />
+      </Switch>
     </div>
     </div>
   );
