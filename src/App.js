@@ -1,5 +1,7 @@
 import React from 'react';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.css';
+
 
 import { countriesList as CountriesList } from './components/CountriesList'
 import CountryDetail from './components/CountryDetail'
@@ -10,15 +12,17 @@ function App () {
 
   return (
     <div className="App">
-    <div className="container">
-
-
-      <div><CountriesList></CountriesList></div>
-      {/* <div><CountryDetail></CountryDetail></div> */}
-      {/* <Route exact path='/countrieslist' component={CountriesList}/> */}
-      <Switch>
+    <div className="container-fluid container--layout">
+    <div class="row">
+  <div class="col-4">
+  <CountriesList ></CountriesList>
+</div>
+  <div class="col-8">
+  <Switch>
         <Route path="/:id" component={CountryDetail} />
       </Switch>
+      </div>
+      </div>
     </div>
     </div>
   );

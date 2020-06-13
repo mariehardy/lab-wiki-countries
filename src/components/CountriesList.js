@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 // import CountryTitle from './CountryTitle'
 import countriesData from '../countries.json'
+import './CountriesList.css';
 
 import { Switch, Route, Link, Redirect } from 'react-router-dom';
 
@@ -12,13 +13,13 @@ import { Switch, Route, Link, Redirect } from 'react-router-dom';
 
     return (
         <div>
-            <ul>
+            <ul className="list__ul">
             {countriesData.map((el) => {
         return (
-          <div key={el.cca3}>
+          <li className="list__li" key={el.cca3}>
           <img src={el.flag} alt={el.name.common}></img>
             <h3><Link to={"/" + el.cca3}>{el.name.common}</Link></h3>
-          </div>
+          </li>
         )
       })}
             </ul>
